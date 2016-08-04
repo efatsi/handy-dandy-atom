@@ -8,4 +8,5 @@
 # For more detailed documentation see
 # https://atom.io/docs/latest/behind-atom-keymaps-in-depth
 'atom-text-editor':
-  'cmd-shift-L': 'handy-dandy:copy-line'
+  'alt-cmd-l': 'handy-dandy:copy-line'
+  'alt-cmd-p': 'handy-dandy:copy-path'

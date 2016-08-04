@@ -2,11 +2,8 @@
   "name": "handy-dandy",
   "main": "./lib/handy-dandy",
   "version": "0.0.1",
-  "description": "Align text around a specified anchor",
-  "activationCommands": {
-    "atom-workspace": "handy-dandy:copy-line"
-  },
-  "repository": "https://github.com/vigetlabs/handy-dandy",
+  "description": "Useful shortcuts for myself.",
+  "repository": "https://github.com/efatsi/handy-dandy",
   "license": "MIT",
   "engines": {
     "atom": ">=0.174.0 <2.0.0"
