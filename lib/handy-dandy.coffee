@@ -9,6 +9,7 @@ module.exports =
       'handy-dandy:copy-line': => @copyLine()
       'handy-dandy:copy-path': => @copyPath()
       'handy-dandy:generate-numbers': => @generateNumbers()
+      'handy-dandy:add-helper-method': => @addHelperMethod()
 
   deactivate: ->
     @subscriptions.dispose()
@@ -36,7 +37,7 @@ module.exports =
       # Order by row, then column if on the same row
       selections = selections.sort (a, b) ->
         if a.start.row - b.start.row != 0
-          return a.start.row - b.start.row
+          a.start.row - b.start.row
         else
           a.start.column - b.start.column
 
@@ -51,6 +52,18 @@ module.exports =
         number = selections.length - index
 
         buffer.setTextInRange(selection, (number).toString(), opts)
+
+  addHelperMethod: ->
+    if @editor()
+      selection = @editor().getSelections()[0]
+      methodName = selection.getText()
+      mode = @editor().getBuffer().getLanguageMode()
+
+      methodRange = mode.getRangeForSyntaxNodeContainingRange(selection.getBufferRange())
+
+      @editor().setCursorBufferPosition(methodRange.end)
+      @editor().insertNewline()
+      @editor().insertText("helper_method :" + methodName, {undo: "skip"})
 
   editor: ->
     atom.workspace.getActiveTextEditor()
