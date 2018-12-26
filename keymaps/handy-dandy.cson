@@ -10,3 +10,4 @@
 'atom-text-editor':
   'alt-cmd-l': 'handy-dandy:copy-line'
   'alt-cmd-p': 'handy-dandy:copy-path'
+  'ctrl-alt-cmd-n': 'handy-dandy:generate-numbers'
