@@ -10,6 +10,8 @@ module.exports =
       'handy-dandy:copy-path': => @copyPath()
       'handy-dandy:generate-numbers': => @generateNumbers()
       'handy-dandy:add-helper-method': => @addHelperMethod()
+      'handy-dandy:set-tabs-to-2': => @setTabTo(2)
+      'handy-dandy:set-tabs-to-4': => @setTabTo(4)
 
   deactivate: ->
     @subscriptions.dispose()
@@ -64,6 +66,9 @@ module.exports =
       @editor().setCursorBufferPosition(methodRange.end)
       @editor().insertNewline()
       @editor().insertText("helper_method :" + methodName, {undo: "skip"})
+
+  setTabTo: (number) ->
+    atom.config.set("editor.tabLength", number)
 
   editor: ->
     atom.workspace.getActiveTextEditor()

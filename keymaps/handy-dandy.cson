@@ -12,3 +12,5 @@
   'alt-cmd-p': 'handy-dandy:copy-path'
   'ctrl-alt-cmd-n': 'handy-dandy:generate-numbers'
   'ctrl-alt-cmd-h': 'handy-dandy:add-helper-method'
+  'alt-cmd-2': 'handy-dandy:set-tabs-to-2'
+  'alt-cmd-4': 'handy-dandy:set-tabs-to-4'
