@@ -8,6 +8,7 @@ module.exports =
     @subscriptions.add atom.commands.add 'atom-workspace',
       'handy-dandy:copy-line': => @copyLine()
       'handy-dandy:copy-path': => @copyPath()
+      'handy-dandy:copy-full-path': => @copyFullPath()
       'handy-dandy:generate-numbers': => @generateNumbers()
       'handy-dandy:add-helper-method': => @addHelperMethod()
       'handy-dandy:set-tabs-to-2': => @setTabTo(2)
@@ -22,14 +23,20 @@ module.exports =
       localPath  = atom.project.relativizePath(fullPath)[1]
       lineNumber = @editor().getCursorBufferPosition().row + 1
 
-      atom.clipboard.write(localPath + ":" + lineNumber)
+      atom.clipboard.write(localPath.replace(/ /g, "\\ ", ) + ":" + lineNumber)
 
   copyPath: ->
     if @editor()
       fullPath   = atom.workspace.getActiveTextEditor().getPath()
       localPath  = atom.project.relativizePath(fullPath)[1]
 
-      atom.clipboard.write(localPath)
+      atom.clipboard.write(localPath.replace(/ /g, "\\ ", ))
+
+  copyFullPath: ->
+    if @editor()
+      fullPath = atom.workspace.getActiveTextEditor().getPath()
+
+      atom.clipboard.write(fullPath.replace(/ /g, "\\ ", ))
 
   generateNumbers: ->
     if @editor()
